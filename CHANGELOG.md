@@ -1,3 +1,7 @@
+## Search discovery
+
+- Add descriptive page metadata and a useful JavaScript-disabled description.
+
 ## MyPod address transition
 
 - Publish new builds at /MyPod/ and retain /Classipod/ as a compatibility snapshot.

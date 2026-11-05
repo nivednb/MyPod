@@ -27,7 +27,7 @@ class ClassipodApp extends ConsumerWidget {
     );
     final router = ref.watch(routerProvider);
     return CupertinoApp.router(
-      onGenerateTitle: (context) => 'MyPod',
+      onGenerateTitle: (context) => 'MyPod - iPod-inspired offline music player',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
