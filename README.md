@@ -1,14 +1,42 @@
 <div align="center">
 
-# 🎵 ClassiPod
+# 🎵 ClassiPod — nivednb’s personal web edition
 
-![Classipod App Screenshots](screenshots/combined.jpg)
+An installable, offline-friendly music player with a classic click-wheel look.
+This edition was developed under the direction of [nivednb](https://github.com/nivednb),
+building on [ClassiPod](https://github.com/adeeteya/Classipod) by
+[Aditya R](https://github.com/adeeteya) and its contributors.
 
-ClassiPod brings an iPod Classic-inspired click wheel to your music collection.
-Play local audio files or stream from a Subsonic-compatible server, including
-Navidrome. Browse both libraries together, or focus on your server collection.
+**[Open the web app](https://nivednb.github.io/Classipod/)** ·
+[What's different](#whats-different-in-this-edition) ·
+[Credits and license](#credits-and-license)
 
 </div>
+
+## What’s different in this edition
+
+This fork adds and adapts features for a personal, installable web player:
+
+- **Your own offline library:** import audio and M3U/M3U8 playlists from Files;
+  cache the application shell and browse imported music on your device.
+- **A more personal look:** first-generation-inspired screen and wheel options,
+  adjustable wheel colors and labels, 3D appearance, and optional split screen.
+- **More ways to browse:** artwork-oriented song views, folder browsing,
+  playlist matching, and language-based grouping where the source is clear.
+- **Games and controls:** Brick, Snake, 2048 and Solitaire; wheel sound options;
+  and a configurable 30–240 second return to Now Playing during playback.
+- **Faster repeat visits:** locally cached metadata and artwork help reduce
+  repeated library processing.
+
+These screenshots show earlier versions of this fork's settings and wheel;
+colors, layout and text may differ in the current app.
+
+<table><tr>
+<td align="center"><img src="screenshots/personal-retro.jpg" width="300" alt="First-generation-inspired light screen, silver body, and white wheel"><br>First-generation screen and wheel</td>
+<td align="center"><img src="screenshots/personal-wheel.jpg" width="300" alt="Red settings screen with an orange first-generation wheel"><br>Wheel style and color options</td>
+</tr></table>
+
+This product includes software developed by Aditya R.
 
 ## Use the web app
 
@@ -122,10 +150,6 @@ by platform:
 | Monkey's Audio | `.ape`                   | Windows, Linux                                  |
 | QuickTime      | `.mov`                   | iOS, Windows, Linux; browser-dependent          |
 
-### 🔜 Upcoming Features
-
-- 📸 Ability to View Photos and Videos from the device
-
 ## Connect to Subsonic or Navidrome
 
 Open **Settings → Library Settings → Subsonic** and enter the server's base
@@ -159,124 +183,13 @@ hot reload does not apply them.
 Linux secure storage requires the system Secret Service/libsecret; Windows
 builds require the Visual Studio ATL component used by flutter_secure_storage.
 
-## 💻 Installation links
+## Native apps and original project
 
-<table>
-  <tr>
-    <th>Platform</th>
-    <th>Installation Links</th>
-  </tr>
-  <tr>
-    <td>Android</td>
-    <td>
-      <a href="https://play.google.com/store/apps/details?id=com.adeeteya.classipod">
-        <img height="80" alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png">
-      </a>
-      <br>
-      <a href="https://f-droid.org/packages/com.adeeteya.classipod">
-        <img height="80" alt="Get it on F-Droid" src="https://f-droid.org/badge/get-it-on.png">
-      </a>
-      <br>
-      <a href="https://github.com/adeeteya/Classipod/releases/latest/download/Classipod-Android.apk">
-        <img alt="APK download" src="https://img.shields.io/static/v1?label=Download&message=Android+.apk&color=2ea44f&style=for-the-badge&logo=Android&logoColor=white&logoSize=auto">
-      </a>
-    </td>
-  </tr>
-
-  <tr>
-      <td>Linux</td>
-      <td>
-        <a href="https://github.com/adeeteya/Classipod/releases/latest/download/Classipod-Linux-AppImage.AppImage">
-          <img alt="Download .AppImage" src="https://img.shields.io/static/v1?label=Download&message=.AppImage&color=FCC624&style=for-the-badge&logo=linux&logoColor=white&logoSize=auto">
-        </a>
-        <br>
-        <br>
-        <a href="https://github.com/adeeteya/Classipod/releases/latest/download/Classipod-Linux-deb.deb">
-          <img alt="Download .deb" src="https://img.shields.io/static/v1?label=Download&message=%20%20%20%20%20.deb&color=A81D33&style=for-the-badge&logo=debian&logoColor=white&logoSize=auto">
-        </a>
-        <br>
-        <br>
-        <a href="https://github.com/adeeteya/Classipod/releases/latest/download/Classipod-Linux-rpm.rpm">
-          <img alt="Download .rpm" src="https://img.shields.io/static/v1?label=Download&message=.rpm&color=EE0000&style=for-the-badge&logo=redhat&logoColor=white&logoSize=auto">
-        </a>
-      </td>
-  </tr>
-
-  <tr>
-      <td>Windows</td>
-      <td>
-        <a href="https://github.com/adeeteya/Classipod/releases/latest/download/Classipod-Windows.exe">
-          <img alt="Download Windows Installer" src="https://img.shields.io/static/v1?label=Download&message=Windows+.exe&color=blue&style=for-the-badge&logo=webtrees&logoColor=white&logoSize=auto">
-        </a>
-      </td>
-  </tr>
-
-  <tr>
-      <td>iOS</td>
-      <td>
-        <a href="https://github.com/adeeteya/Classipod/releases/latest/download/Classipod-iOS.ipa">
-          <img alt="Download .ipa" src="https://img.shields.io/static/v1?label=Download&message=.ipa&color=black&style=for-the-badge&logo=ios&logoColor=white&logoSize=auto">
-        </a>
-        <br>Unsigned; requires sideloading and signing on your device.
-      </td>
-  </tr>
-
-  <tr>
-      <td>macOS</td>
-      <td>
-        <a href="https://github.com/adeeteya/Classipod/releases/latest/download/Classipod-macOS.dmg">
-          <img alt="Download .dmg" src="https://img.shields.io/static/v1?label=Download&message=.dmg&color=lightgray&style=for-the-badge&logo=macos&logoColor=white&logoSize=auto">
-        </a>
-        <br>Apple Silicon and Intel; no Developer ID signature or notarization.
-      </td>
-  </tr>
-
-  <tr>
-      <td>Web App</td>
-      <td>
-        <a href="https://nivednb.github.io/Classipod/">
-          <img alt="Web App" src="https://img.shields.io/static/v1?label=Webapp&message=Visit+Website&color=blueviolet&style=for-the-badge&logo=googlechrome&logoColor=white&logoSize=auto">
-        </a>
-      </td>
-  </tr>
-
-</table>
-
-### Installing on iPhone or iPad
-
-Download `Classipod-iOS.ipa` from a release that includes Apple builds. This is
-an unsigned device build, not an App Store or TestFlight download. Install it
-using [AltStore Classic](https://faq.altstore.io/altstore-classic) with AltServer,
-or another compatible sideloading tool, which signs it using your Apple account.
-Downloading the IPA in Safari alone does not install it.
-
-With a free account, AltStore apps need refreshing every seven days, and the
-three-active-app limit includes AltStore itself. Follow the tool's installation
-instructions, including Developer Mode where required. See
-[AltStore's account limits](https://faq.altstore.io/altstore-classic/your-altstore).
-
-### Installing on macOS
-
-Download `Classipod-macOS.dmg`, open it, and drag `classipod.app` into
-**Applications**. The universal app supports Apple Silicon and Intel Macs
-running macOS 12 or later.
-
-The app is **not notarized or signed with an Apple Developer ID**. It carries a
-local ad-hoc signature for execution on Apple Silicon; this does not verify a
-developer identity. Gatekeeper may block the first launch. If you trust the
-release, try opening the app, then use **System Settings → Privacy & Security →
-Open Anyway** and confirm. See [Apple's instructions](https://support.apple.com/en-us/102445).
-
-On both platforms, choose a parent music folder when prompted. ClassiPod scans
-its subfolders and caches metadata and artwork. Use
-**Settings → Library Settings → Re-index** to select a folder again and rebuild
-the index.
-
-Apple downloads appear only on releases built with their platform options
-selected. See [Apple release documentation](docs/apple-releases.md) for build
-commands, checksums, and release configuration. The web player imports selected
-audio files into browser storage; iPhone's Files picker does not necessarily
-preserve folder structure. It also supports optional Subsonic/Navidrome streaming.
+The link above is **this fork’s web app**. The original developer's native
+Android, iOS, macOS, Windows and Linux downloads are available from the
+[upstream project](https://github.com/adeeteya/Classipod). Those downloads are
+upstream builds and do not necessarily include this fork's web changes or games.
+This fork does not currently offer an App Store release of its own.
 
 ## 🔌 Plugins
 
@@ -318,16 +231,20 @@ preserve folder structure. It also supports optional Subsonic/Navidrome streamin
 | [**hive_ce_generator**](https://pub.dev/packages/hive_ce_generator)                           | For automatically generating Hive TypeAdapters                                      |
 | [**riverpod_lint**](https://pub.dev/packages/riverpod_lint)                                   | For using riverpod specific linting rules                                           |
 
-## 🤓 Author
+## Credits and license
 
-**[Aditya R](https://github.com/adeeteya)**
+- **Original ClassiPod:** [Aditya R](https://github.com/adeeteya) and the
+  [upstream contributors](https://github.com/adeeteya/Classipod/graphs/contributors).
+- **This edition:** developed under the direction of
+  [nivednb](https://github.com/nivednb), with AI-assisted implementation and
+  iterative testing and feedback. See [the changelog](CHANGELOG.md) for changes.
+- **License:** the original [BSD-4-Clause license](LICENSE), copyright
+  © 2025 Aditya R, remains intact. This product includes software developed by
+  Aditya R. Third-party assets and dependencies may have their own terms.
+- **Icon attribution:** <a href="https://www.flaticon.com/free-icons/ipod">iPod icons created by Freepik - Flaticon</a>.
 
-## 🔖 LICENCE
-
-Copyright (c) 2025 Aditya R
-[BSD-4-Clause LICENCE](https://github.com/adeeteya/Classipod/blob/master/LICENSE)
-
-## 🙏 Attributions
-
-<a href="https://www.flaticon.com/free-icons/ipod" title="ipod icons">Ipod icons created by
-Freepik - Flaticon</a>
+This is an independent fork and is not an official release endorsed by the
+original project or Apple. Credit for this fork is a project acknowledgment;
+it does not alter the license or create a new mandatory attribution condition.
+See [credits and rights notes](docs/credits-and-rights.md) for the project
+history and open questions.

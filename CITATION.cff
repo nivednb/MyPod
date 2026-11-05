@@ -1,19 +1,20 @@
 cff-version: 1.2.0
-title: ClassiPod
 message: >-
-  If you use this software, please cite it using the
-  metadata from this file.
+  Please cite this independent edition and acknowledge the original project.
 type: software
+title: "ClassiPod: nivednb’s personal web edition"
 authors:
+  - name: nivednb
+    alias: nivednb
+    website: "https://github.com/nivednb"
   - given-names: Aditya
     family-names: R
-    email: adeeteya@gmail.com
-    orcid: 'https://orcid.org/0009-0009-7558-063X'
-repository-code: 'https://github.com/adeeteya/Classipod'
-url: 'https://adeeteya.github.io/Classipod/#/'
-repository-artifact: 'https://github.com/adeeteya/Classipod/releases/latest'
+    affiliation: "Original ClassiPod author"
+    website: "https://github.com/adeeteya"
+repository-code: "https://github.com/nivednb/Classipod"
+url: "https://nivednb.github.io/Classipod/"
 abstract: >-
-  An iPod Classic-inspired music player for local audio and streaming
-  from Subsonic-compatible servers, including Navidrome.
+  An independently maintained web edition of ClassiPod with local imports,
+  appearance options, playlist tools and games, based on the original project
+  by Aditya R and contributors.
 license: BSD-4-Clause
-version: 2.1.0

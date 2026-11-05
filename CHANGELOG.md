@@ -1,3 +1,7 @@
+## Repository presentation
+
+- Document this independent edition, its additions, screenshots, project credits and rights-review notes.
+
 ## Now Playing idle delay
 
 - Add a saved 30–240 second delay for automatic Now Playing navigation.
