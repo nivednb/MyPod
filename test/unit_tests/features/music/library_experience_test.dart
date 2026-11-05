@@ -29,6 +29,8 @@ void main() {
       final first = create();
       await first.read(sharedPreferencesWithCacheProvider.future);
       final settings = first.read(libraryExperienceProvider.notifier);
+      expect(first.read(libraryExperienceProvider).nowPlayingDelaySeconds, 30);
+      await settings.cycleNowPlayingDelay();
       await settings.toggleThreeDimensional();
       await settings.cycleWheelPosition();
       await settings.setView(SongView.covers);
@@ -50,6 +52,15 @@ void main() {
       expect(value.wheelStyle, WheelStyle.firstGeneration);
       expect(value.wheelPosition, WheelPosition.higher);
       expect(value.threeDimensional, true);
+      expect(value.nowPlayingDelaySeconds, 60);
+      final controller = restored.read(libraryExperienceProvider.notifier);
+      for (var i = 0; i < 7; i++) {
+        await controller.cycleNowPlayingDelay();
+      }
+      expect(
+        restored.read(libraryExperienceProvider).nowPlayingDelaySeconds,
+        30,
+      );
     },
   );
 }

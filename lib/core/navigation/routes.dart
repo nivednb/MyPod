@@ -6,6 +6,8 @@ import 'package:classipod/features/app_startup/screens/splash_screen.dart';
 import 'package:classipod/features/custom_screen_elements/custom_scroll_behavior.dart';
 import 'package:classipod/features/custom_screen_elements/options_modal_page.dart';
 import 'package:classipod/features/device/widgets/device_frame.dart';
+import 'package:classipod/features/games/game_logic.dart';
+import 'package:classipod/features/games/games_screen.dart';
 import 'package:classipod/features/menu/screens/main_menu_screen.dart';
 import 'package:classipod/features/menu/screens/music_menu_screen.dart';
 import 'package:classipod/features/menu/screens/split_screen_placeholder.dart';
@@ -52,6 +54,11 @@ import 'package:go_router/go_router.dart';
 enum Routes {
   splash,
   menu,
+  games,
+  brick,
+  snake,
+  merge,
+  solitaire,
   settings,
   librarySettings,
   libraryExperience,
@@ -97,6 +104,16 @@ enum Routes {
         return "";
       case menu:
         return context.localization.menuScreenTitle;
+      case games:
+        return 'Games';
+      case brick:
+        return 'Brick';
+      case snake:
+        return 'Snake';
+      case merge:
+        return '2048';
+      case solitaire:
+        return 'Solitaire';
       case settings:
         return context.localization.settingsScreenTitle;
       case libraryExperience:
@@ -239,6 +256,27 @@ final routerProvider = Provider(
                 pageBuilder: (context, state) =>
                     const CupertinoPage(child: MainMenuScreen()),
                 routes: [
+                  GoRoute(
+                    path: Routes.games.name,
+                    name: Routes.games.name,
+                    parentNavigatorKey: rootNavigatorKey,
+                    pageBuilder: (context, state) => const CupertinoPage(
+                      child: ScreenPageContent(child: GamesScreen()),
+                    ),
+                    routes: [
+                      for (final game in GameKind.values)
+                        GoRoute(
+                          path: game.name,
+                          name: game.name,
+                          parentNavigatorKey: rootNavigatorKey,
+                          pageBuilder: (context, state) => CupertinoPage(
+                            child: ScreenPageContent(
+                              child: GameScreen(kind: game),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                   GoRoute(
                     path: Routes.settings.name,
                     name: Routes.settings.name,

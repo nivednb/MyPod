@@ -28,7 +28,7 @@ class _LibraryExperienceScreenState
   @override
   String get routeName => Routes.libraryExperience.name;
   @override
-  List<int> get displayItems => const [0, 1, 2, 3, 4, 5, 6, 7];
+  List<int> get displayItems => const [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
   @override
   void onSelectPressed() => _select(selectedDisplayItem);
@@ -59,6 +59,8 @@ class _LibraryExperienceScreenState
         unawaited(controller.cycleWheelPosition());
       case 7:
         unawaited(controller.toggleThreeDimensional());
+      case 8:
+        unawaited(controller.cycleNowPlayingDelay());
     }
   }
 
@@ -75,6 +77,7 @@ class _LibraryExperienceScreenState
       'Wheel style',
       'Wheel position',
       '3D appearance',
+      'Now Playing delay',
     ];
     final values = [
       songViewTitle(context, settings.songView),
@@ -95,6 +98,7 @@ class _LibraryExperienceScreenState
         WheelPosition.lower => 'Lower',
       },
       settings.threeDimensional ? 'On' : 'Off',
+      '${settings.nowPlayingDelaySeconds} sec',
     ];
     return CupertinoPageScaffold(
       child: ListView.builder(

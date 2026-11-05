@@ -98,6 +98,7 @@ a music subscription, offline server downloads, or server playlist syncing.
 - 📳 Enable vibration feedback on supported devices.
 - 🖥️ Use responsive layouts and fullscreen Immersive Mode.
 - 🔋 View battery level and charging status where supported.
+- 🎮 Play offline Brick, Snake, 2048 and draw-one Solitaire from **Games**.
 - 📖 Get started with the introductory tutorial.
 - ℹ️ Find app information in the About screen.
 - 🌍 Use ClassiPod in your language with a multilingual interface.
@@ -123,7 +124,6 @@ by platform:
 
 ### 🔜 Upcoming Features
 
-- 🎮 Ipod Built-in Games
 - 📸 Ability to View Photos and Videos from the device
 
 ## Connect to Subsonic or Navidrome

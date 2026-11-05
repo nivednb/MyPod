@@ -1,3 +1,13 @@
+## Now Playing idle delay
+
+- Add a saved 30–240 second delay for automatic Now Playing navigation.
+
+## Offline games
+
+- Add Brick, Snake, 2048 and draw-one Solitaire with wheel and touch controls.
+- Keep game activity independent of the music library and pause arcade games
+  when the app leaves the foreground.
+
 ## Web startup and playback performance
 
 - Cache locally read metadata and bounded artwork for faster subsequent starts.

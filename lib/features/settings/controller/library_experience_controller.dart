@@ -24,6 +24,8 @@ enum WheelStyle { classic, firstGeneration }
 
 enum WheelPosition { normal, higher, lower }
 
+const nowPlayingDelayChoices = [30, 60, 90, 120, 150, 180, 210, 240];
+
 class LibraryExperience {
   final SongView songView;
   final bool acceleratedWheel;
@@ -33,6 +35,7 @@ class LibraryExperience {
   final WheelStyle wheelStyle;
   final WheelPosition wheelPosition;
   final bool threeDimensional;
+  final int nowPlayingDelaySeconds;
 
   const LibraryExperience({
     this.songView = SongView.artwork,
@@ -43,6 +46,7 @@ class LibraryExperience {
     this.wheelStyle = WheelStyle.classic,
     this.wheelPosition = WheelPosition.normal,
     this.threeDimensional = false,
+    this.nowPlayingDelaySeconds = 30,
   });
 }
 
@@ -57,6 +61,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
     final preferences = ref.watch(sharedPreferencesWithCacheProvider).value;
     if (preferences == null) return const LibraryExperience();
     final savedView = preferences.getString('librarySongView');
+    final savedDelay = preferences.getInt('nowPlayingDelaySeconds');
     return LibraryExperience(
       songView:
           SongView.values.where((v) => v.name == savedView).firstOrNull ??
@@ -83,6 +88,9 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
               .firstOrNull ??
           WheelPosition.normal,
       threeDimensional: preferences.getBool('threeDimensional') ?? false,
+      nowPlayingDelaySeconds: nowPlayingDelayChoices.contains(savedDelay)
+          ? savedDelay!
+          : 30,
       wheelFeedback: preferences.getString('wheelFeedback') == 'crisp'
           ? WheelFeedback.crisp
           : WheelFeedback.soft,
@@ -102,6 +110,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
     await preferences.remove('wheelStyle');
     await preferences.remove('wheelPosition');
     await preferences.remove('threeDimensional');
+    await preferences.remove('nowPlayingDelaySeconds');
   }
 
   Future<void> setView(SongView view) async {
@@ -114,6 +123,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: state.wheelStyle,
       wheelPosition: state.wheelPosition,
       threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
     );
     await ref
         .read(sharedPreferencesWithCacheProvider)
@@ -131,6 +141,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: state.wheelStyle,
       wheelPosition: state.wheelPosition,
       threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
     );
     await ref
         .read(sharedPreferencesWithCacheProvider)
@@ -147,6 +158,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: state.wheelStyle,
       wheelPosition: state.wheelPosition,
       threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
       wheelFeedback: state.wheelFeedback == WheelFeedback.soft
           ? WheelFeedback.crisp
           : WheelFeedback.soft,
@@ -169,6 +181,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: state.wheelStyle,
       wheelPosition: state.wheelPosition,
       threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
     );
     await ref
         .read(sharedPreferencesWithCacheProvider)
@@ -189,6 +202,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: state.wheelStyle,
       wheelPosition: state.wheelPosition,
       threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
     );
     await ref
         .read(sharedPreferencesWithCacheProvider)
@@ -209,6 +223,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: next,
       wheelPosition: state.wheelPosition,
       threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
     );
     await ref
         .read(sharedPreferencesWithCacheProvider)
@@ -228,6 +243,7 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: state.wheelStyle,
       wheelPosition: next,
       threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
     );
     await ref
         .read(sharedPreferencesWithCacheProvider)
@@ -246,10 +262,35 @@ class LibraryExperienceController extends Notifier<LibraryExperience> {
       wheelStyle: state.wheelStyle,
       wheelPosition: state.wheelPosition,
       threeDimensional: next,
+      nowPlayingDelaySeconds: state.nowPlayingDelaySeconds,
     );
     await ref
         .read(sharedPreferencesWithCacheProvider)
         .requireValue
         .setBool('threeDimensional', next);
+  }
+
+  Future<void> cycleNowPlayingDelay() async {
+    final next =
+        nowPlayingDelayChoices[(nowPlayingDelayChoices.indexOf(
+                  state.nowPlayingDelaySeconds,
+                ) +
+                1) %
+            nowPlayingDelayChoices.length];
+    state = LibraryExperience(
+      songView: state.songView,
+      acceleratedWheel: state.acceleratedWheel,
+      wheelFeedback: state.wheelFeedback,
+      wheelColor: state.wheelColor,
+      wheelLabelColor: state.wheelLabelColor,
+      wheelStyle: state.wheelStyle,
+      wheelPosition: state.wheelPosition,
+      threeDimensional: state.threeDimensional,
+      nowPlayingDelaySeconds: next,
+    );
+    await ref
+        .read(sharedPreferencesWithCacheProvider)
+        .requireValue
+        .setInt('nowPlayingDelaySeconds', next);
   }
 }

@@ -4,6 +4,7 @@ import 'package:classipod/core/extensions/go_router_extensions.dart';
 import 'package:classipod/core/navigation/routes.dart';
 import 'package:classipod/features/device/services/device_buttons_service_provider.dart';
 import 'package:classipod/features/now_playing/provider/now_playing_details_provider.dart';
+import 'package:classipod/features/settings/controller/library_experience_controller.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -60,11 +61,16 @@ class _NowPlayingIdleNavigationState
   void _restartTimer() {
     _timer?.cancel();
     if (!mounted || !_eligible) return;
-    _timer = Timer(const Duration(seconds: 10), () {
-      if (mounted && _eligible) {
-        unawaited(_openNowPlaying());
-      }
-    });
+    _timer = Timer(
+      Duration(
+        seconds: ref.read(libraryExperienceProvider).nowPlayingDelaySeconds,
+      ),
+      () {
+        if (mounted && _eligible) {
+          unawaited(_openNowPlaying());
+        }
+      },
+    );
   }
 
   Future<void> _openNowPlaying() async {
@@ -130,6 +136,10 @@ class _NowPlayingIdleNavigationState
       (_, _) => _restartTimer(),
     );
     ref.listen(deviceButtonsServiceProvider, (_, _) => _restartTimer());
+    ref.listen(
+      libraryExperienceProvider.select((value) => value.nowPlayingDelaySeconds),
+      (_, _) => _restartTimer(),
+    );
     return Listener(
       behavior: HitTestBehavior.translucent,
       onPointerDown: (event) {

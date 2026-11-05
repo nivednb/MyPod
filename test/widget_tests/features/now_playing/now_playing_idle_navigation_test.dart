@@ -9,6 +9,7 @@ import 'package:classipod/features/menu/screens/split_screen_placeholder.dart';
 import 'package:classipod/features/now_playing/models/now_playing_model.dart';
 import 'package:classipod/features/now_playing/provider/now_playing_details_provider.dart';
 import 'package:classipod/features/now_playing/widgets/now_playing_idle_navigation.dart';
+import 'package:classipod/features/settings/controller/library_experience_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,6 +31,13 @@ class _Playback extends NowPlayingDetailsNotifier {
 
   void pause() => state = state.copyWith(isPlaying: false);
   void play() => state = state.copyWith(isPlaying: true);
+}
+
+class _Settings extends LibraryExperienceController {
+  @override
+  LibraryExperience build() => const LibraryExperience();
+  void changeDelay(int seconds) =>
+      state = LibraryExperience(nowPlayingDelaySeconds: seconds);
 }
 
 class _Buttons extends DeviceButtonsServiceNotifier {
@@ -66,6 +74,7 @@ void main() {
         splitScreenViewControllerProvider.overrideWithValue(splitController),
         nowPlayingDetailsProvider.overrideWith(_Playback.new),
         deviceButtonsServiceProvider.overrideWith(_Buttons.new),
+        libraryExperienceProvider.overrideWith(_Settings.new),
       ],
     );
     router = GoRouter(
@@ -83,6 +92,8 @@ void main() {
               'settings',
               'songsMoreOptions',
               'nowPlaying',
+              'games',
+              'solitaire',
             ])
               GoRoute(
                 path: '/$name',
@@ -111,11 +122,11 @@ void main() {
 
   String location() => router.routerDelegate.currentConfiguration.uri.path;
 
-  testWidgets('opens after ten seconds and preserves the back destination', (
+  testWidgets('opens after thirty seconds and preserves the back destination', (
     tester,
   ) async {
     await mount(tester);
-    await tester.pump(const Duration(seconds: 9));
+    await tester.pump(const Duration(seconds: 29));
     expect(location(), '/menu');
     await tester.pump(const Duration(seconds: 1));
     await tester.pumpAndSettle();
@@ -125,12 +136,28 @@ void main() {
     expect(find.text('menu'), findsOneWidget);
   });
 
+  testWidgets(
+    'changing the delay restarts the timer with the selected interval',
+    (tester) async {
+      await mount(tester);
+      await tester.pump(const Duration(seconds: 29));
+      (container.read(libraryExperienceProvider.notifier) as _Settings)
+          .changeDelay(60);
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 59));
+      expect(location(), '/menu');
+      await tester.pump(const Duration(seconds: 1));
+      await tester.pumpAndSettle();
+      expect(find.text('nowPlaying'), findsOneWidget);
+    },
+  );
+
   for (final route in ['menu', 'songs']) {
     testWidgets('idle navigation from $route closes and restores split view', (
       tester,
     ) async {
       await mount(tester, route: route);
-      await tester.pump(const Duration(seconds: 9));
+      await tester.pump(const Duration(seconds: 29));
       expect(splitController.closeCalls, 0);
       await tester.pump(const Duration(seconds: 1));
       await tester.pumpAndSettle();
@@ -152,10 +179,12 @@ void main() {
     'settings',
     'songsMoreOptions',
     'nowPlaying',
+    'games',
+    'solitaire',
   ]) {
     testWidgets('does not leave $route', (tester) async {
       await mount(tester, route: route);
-      await tester.pump(const Duration(seconds: 20));
+      await tester.pump(const Duration(seconds: 40));
       expect(location(), '/$route');
     });
   }
@@ -164,14 +193,14 @@ void main() {
     tester,
   ) async {
     await mount(tester);
-    await tester.pump(const Duration(seconds: 9));
+    await tester.pump(const Duration(seconds: 29));
     final playback =
         container.read(nowPlayingDetailsProvider.notifier) as _Playback;
     playback.pause();
-    await tester.pump(const Duration(seconds: 20));
+    await tester.pump(const Duration(seconds: 40));
     expect(location(), '/menu');
     playback.play();
-    await tester.pump(const Duration(seconds: 9));
+    await tester.pump(const Duration(seconds: 29));
     expect(location(), '/menu');
     await tester.pump(const Duration(seconds: 1));
     await tester.pumpAndSettle();
@@ -181,7 +210,7 @@ void main() {
   for (final input in ['touch', 'wheel', 'keyboard', 'navigation']) {
     testWidgets('$input restarts the timer', (tester) async {
       await mount(tester);
-      await tester.pump(const Duration(seconds: 9));
+      await tester.pump(const Duration(seconds: 29));
       switch (input) {
         case 'touch':
           await tester.tap(find.text('menu'));
@@ -194,7 +223,7 @@ void main() {
           router.goNamed('songs');
           await tester.pumpAndSettle();
       }
-      await tester.pump(const Duration(seconds: 9));
+      await tester.pump(const Duration(seconds: 29));
       expect(find.text('nowPlaying'), findsNothing);
       await tester.pump(const Duration(seconds: 1));
       await tester.pumpAndSettle();
@@ -209,14 +238,14 @@ void main() {
     final gesture = await tester.startGesture(
       tester.getCenter(find.text('menu')),
     );
-    await tester.pump(const Duration(seconds: 20));
+    await tester.pump(const Duration(seconds: 40));
     expect(location(), '/menu');
     await gesture.up();
     tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.paused);
-    await tester.pump(const Duration(seconds: 20));
+    await tester.pump(const Duration(seconds: 40));
     expect(location(), '/menu');
     tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
-    await tester.pump(const Duration(seconds: 9));
+    await tester.pump(const Duration(seconds: 29));
     expect(location(), '/menu');
     await tester.pump(const Duration(seconds: 1));
     await tester.pumpAndSettle();
@@ -235,11 +264,11 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.pump(const Duration(seconds: 20));
+    await tester.pump(const Duration(seconds: 40));
     expect(location(), '/menu');
     Navigator.of(context, rootNavigator: true).pop();
     await tester.pumpAndSettle();
-    await tester.pump(const Duration(seconds: 10));
+    await tester.pump(const Duration(seconds: 30));
     await tester.pumpAndSettle();
     expect(find.text('nowPlaying'), findsOneWidget);
   });

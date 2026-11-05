@@ -200,3 +200,33 @@ requests for the app; demo tracks/artwork use remote URLs, and an optional
 Subsonic connection sends requests to the configured server. Neither a public
 repository nor the shared URL is a private cloud vault. Do not commit audio,
 playlist files, cookies or credentials to the repository.
+
+
+## Games
+
+Open **Games** from the main menu. The games run offline and do not require an
+account. MENU goes back; the play/pause button continues to control music. Hold
+the center button or the game board to start a fresh game.
+
+- **Brick:** rotate the wheel or drag across the board to move the paddle.
+  Press the center or tap the board to start/pause. Clear all bricks with three
+  lives; center restarts after a win or loss.
+- **Snake:** rotate the wheel or use previous/next to turn; swipe to set a
+  direction. Center or a board tap starts/pauses. Eat the dot and avoid walls
+  and the snake's body.
+- **2048:** rotate the wheel or use previous/next to choose a direction, then
+  press center to move. You can also swipe directly. Equal tiles merge once per
+  move; you can continue after reaching 2048. Center restarts after game over.
+- **Solitaire:** draw-one Klondike. Rotate the wheel to choose the stock,
+  waste, foundations or tableau columns, then press center. Select a source
+  and then a destination; press center on the same pile to cancel. Previous and
+  next adjust the selected face-up stack depth before choosing it. Touch a card
+  or pile to select it directly. Empty the stock to recycle the waste. Build
+  foundations from ace to king by suit and tableau in descending alternating
+  colors; only kings may start an empty column.
+
+Game sessions restart when reopened. Music playback and the local library are
+independent of games. Physical iPhone touch and performance may differ from a
+desktop browser and should be checked on the device.
+
+The automatic Now Playing screen delay can be set under **Settings → Library & Wheel → Now Playing delay**. Select the row to cycle from 30 to 240 seconds in 30-second steps. The choice is saved on the device; interaction restarts the timer, and games are not interrupted.
