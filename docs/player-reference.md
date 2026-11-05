@@ -7,7 +7,7 @@ This edition was developed under the direction of [nivednb](https://github.com/n
 building on [ClassiPod](https://github.com/adeeteya/Classipod) by
 [Aditya R](https://github.com/adeeteya) and its contributors.
 
-**[Open the web app](https://nivednb.github.io/Classipod/)** ·
+**[Open the web app](https://nivednb.github.io/MyPod/)** ·
 [What's different](#whats-different-in-this-edition) ·
 [Credits and license](#credits-and-license)
 
@@ -32,14 +32,15 @@ This product includes software developed by Aditya R.
 
 ## Scan to open MyPod
 
-<a href="https://nivednb.github.io/Classipod/"><img src="../screenshots/open-mypod-qr.png" width="180" alt="QR code to open MyPod"></a>
+<a href="https://nivednb.github.io/MyPod/"><img src="../screenshots/open-mypod-qr.png" width="180" alt="QR code to open MyPod"></a>
 
-Scan with your phone’s camera or [open MyPod](https://nivednb.github.io/Classipod/).
-The existing address and on-device library remain the same.
+Scan with your phone’s camera or [open MyPod](https://nivednb.github.io/MyPod/).
+The earlier /Classipod/ address remains a compatibility snapshot.
+Home Screen installations may have separate storage; keep your original files.
 
 ## Use the web app
 
-**[Open MyPod](https://nivednb.github.io/Classipod/)** — this public link
+**[Open MyPod](https://nivednb.github.io/MyPod/)** — this public link
 opens an installable, standalone web app. Share the link; each person imports
 their own audio and playlists on their own device. The link does not share your
 library or automatically sync libraries between devices.

@@ -7,7 +7,7 @@ contributors](https://github.com/adeeteya/Classipod), based on upstream commit
 [`772a6d3`](https://github.com/adeeteya/Classipod/commit/772a6d3). The personal
 edition was developed under the direction of [nivednb](https://github.com/nivednb),
 with AI-assisted implementation and iterative user feedback and testing.
-The [changelog](../CHANGELOG.md) and [commit history](https://github.com/nivednb/Classipod/commits/master/)
+The [changelog](../CHANGELOG.md) and [commit history](https://github.com/nivednb/MyPod/commits/master/)
 document the changes. Commit author labels record Git metadata; they do not
 alone determine legal authorship.
 

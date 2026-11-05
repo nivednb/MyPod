@@ -89,7 +89,7 @@ jobs:
 
       - uses: bluefireteam/flutter-gh-pages@v9
         with:
-          baseHref: /Classipod/
+          baseHref: /MyPod/
           # universal_html still depends on dart:html; use JavaScript.
           compileToWasm: false
 

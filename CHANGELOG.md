@@ -1,3 +1,7 @@
+## MyPod address transition
+
+- Publish new builds at /MyPod/ and retain /Classipod/ as a compatibility snapshot.
+
 ## MyPod web edition
 
 - Name the personal web edition MyPod and add a scan-to-open QR code.

@@ -155,8 +155,11 @@ The original iPod had a physical wheel; touch behavior is an approximation.
 
 ## Share and install
 
-Share <https://nivednb.github.io/Classipod/>. The public site has no shared
-account or central music library. Each person's imports, playlists and settings
+Share <https://nivednb.github.io/MyPod/>. The earlier
+<https://nivednb.github.io/Classipod/> remains a compatibility snapshot for
+existing installations. iPhone Home Screen apps may have separate storage;
+keep your existing installation and original files until the new one is checked.
+The public site has no shared account or central music library. Each person's imports, playlists and settings
 stay in that device's browser storage; the site itself is shared. People must
 supply their own playable audio files and playlist files. Nothing in the link
 transfers the owner's songs. The same browser/profile may share site storage

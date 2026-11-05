@@ -22,6 +22,8 @@ class PwaTests(unittest.TestCase):
             self.assertIn('./index.html', first)
             self.assertIn('./main.dart.js', first)
             self.assertNotIn('__CACHE__', first)
+            self.assertIn('mypod-shell-', first)
+            self.assertNotIn('classipod-shell-', first)
             self.assertNotIn('.last_build_id', first)
             pwa.prepare(root)
             self.assertEqual(first, (root / 'personal-player-sw.js').read_text())

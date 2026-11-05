@@ -32,7 +32,7 @@ def prepare(root: Path) -> None:
     for path in paths:
         digest.update(path.encode())
         digest.update((root / path).read_bytes())
-    cache = 'classipod-shell-' + digest.hexdigest()[:16]
+    cache = 'mypod-shell-' + digest.hexdigest()[:16]
     script = """'use strict';
 const CACHE = __CACHE__;
 const FILES = __FILES__;
@@ -42,7 +42,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter(key => key.startsWith('classipod-shell-') && key !== CACHE)
+    await Promise.all(keys.filter(key => key.startsWith('mypod-shell-') && key !== CACHE)
       .map(key => caches.delete(key)));
     await self.clients.claim();
   })());
