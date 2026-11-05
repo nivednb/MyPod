@@ -6,21 +6,11 @@
 
 An offline-friendly music player with a nostalgic click wheel and a look you can make your own.
 
-![MyPod promotional illustration](screenshots/mypod-poster.png)
+![MyPod visual guide showing the first-generation screen, appearance settings, music menu, and split-screen view](screenshots/mypod-guide.png)
 
 *[Open MyPod](https://nivednb.github.io/Classipod/) · [How to install](docs/personal-player.md) · [Credits & license](#credits--license)*
 
 </div>
-
-## A closer look
-
-<table><tr>
-<td align="center"><img src="screenshots/personal-retro.jpg" width="300" alt="An earlier build with a silver body and first-generation-inspired display and wheel"><br><b>First-generation inspired</b></td>
-<td align="center"><img src="screenshots/personal-wheel.jpg" width="300" alt="An earlier build with a black body, dark menu and orange wheel"><br><b>Black and orange</b></td>
-</tr></table>
-
-The poster is an AI-generated illustration. The two images are screenshots of
-earlier builds; the current app has received additional visual refinements.
 
 ## Make it yours
 
