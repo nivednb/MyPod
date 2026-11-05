@@ -1,6 +1,6 @@
 {
-    "name": "ClassiPod",
-    "short_name": "ClassiPod",
+    "name": "MyPod",
+    "short_name": "MyPod",
     "start_url": "./#/menu",
     "display": "standalone",
     "background_color": "#151515",

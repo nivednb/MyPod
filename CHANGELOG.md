@@ -1,3 +1,7 @@
+## MyPod web edition
+
+- Name the personal web edition MyPod and add a scan-to-open QR code.
+
 ## Repository presentation
 
 - Document this independent edition, its additions, screenshots, project credits and rights-review notes.

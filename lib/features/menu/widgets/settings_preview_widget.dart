@@ -1,6 +1,5 @@
 import 'package:classipod/core/constants/app_palette.dart';
 import 'package:classipod/core/constants/assets.dart';
-import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/core/theme/ipod_gradients.dart';
 import 'package:classipod/core/theme/ipod_typography.dart';
 import 'package:classipod/features/menu/models/split_screen_type.dart';
@@ -27,7 +26,7 @@ class SettingsPreviewWidget extends StatelessWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Text(
-                  context.localization.appTitle,
+                  'MyPod',
                   maxLines: 1,
                   textAlign: TextAlign.center,
                   style: IpodTypography.forContext(

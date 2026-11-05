@@ -2,7 +2,7 @@
 
 ## Project history
 
-This web edition is an independent fork of [ClassiPod by Aditya R and its
+MyPod is an independent web edition and fork of [ClassiPod by Aditya R and its
 contributors](https://github.com/adeeteya/Classipod), based on upstream commit
 [`772a6d3`](https://github.com/adeeteya/Classipod/commit/772a6d3). The personal
 edition was developed under the direction of [nivednb](https://github.com/nivednb),

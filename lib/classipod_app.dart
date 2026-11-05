@@ -1,4 +1,3 @@
-import 'package:classipod/core/extensions/build_context_extensions.dart';
 import 'package:classipod/core/navigation/routes.dart';
 import 'package:classipod/core/services/audio_player_service.dart';
 import 'package:classipod/features/app_startup/controllers/splash_controller.dart';
@@ -28,7 +27,7 @@ class ClassipodApp extends ConsumerWidget {
     );
     final router = ref.watch(routerProvider);
     return CupertinoApp.router(
-      onGenerateTitle: (context) => context.localization.appTitle,
+      onGenerateTitle: (context) => 'MyPod',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,

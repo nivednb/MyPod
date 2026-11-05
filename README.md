@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎵 ClassiPod — nivednb’s personal web edition
+# 🎵 MyPod — nivednb’s personal web edition
 
 An installable, offline-friendly music player with a classic click-wheel look.
 This edition was developed under the direction of [nivednb](https://github.com/nivednb),
@@ -28,19 +28,18 @@ This fork adds and adapts features for a personal, installable web player:
 - **Faster repeat visits:** locally cached metadata and artwork help reduce
   repeated library processing.
 
-These screenshots show earlier versions of this fork's settings and wheel;
-colors, layout and text may differ in the current app.
-
-<table><tr>
-<td align="center"><img src="screenshots/personal-retro.jpg" width="300" alt="First-generation-inspired light screen, silver body, and white wheel"><br>First-generation screen and wheel</td>
-<td align="center"><img src="screenshots/personal-wheel.jpg" width="300" alt="Red settings screen with an orange first-generation wheel"><br>Wheel style and color options</td>
-</tr></table>
-
 This product includes software developed by Aditya R.
+
+## Scan to open MyPod
+
+<a href="https://nivednb.github.io/Classipod/"><img src="screenshots/open-mypod-qr.png" width="180" alt="QR code to open MyPod"></a>
+
+Scan with your phone’s camera or [open MyPod](https://nivednb.github.io/Classipod/).
+The existing address and on-device library remain the same.
 
 ## Use the web app
 
-**[Open ClassiPod](https://nivednb.github.io/Classipod/)** — this public link
+**[Open MyPod](https://nivednb.github.io/Classipod/)** — this public link
 opens an installable, standalone web app. Share the link; each person imports
 their own audio and playlists on their own device. The link does not share your
 library or automatically sync libraries between devices.
@@ -68,7 +67,7 @@ Linux builds. The native download links below refer to upstream releases and
 may not include changes in this web fork.
 
 Local files play offline. Server music requires your own compatible server,
-an account on that server, and a network connection. ClassiPod does not include
+an account on that server, and a network connection. MyPod does not include
 a music subscription, offline server downloads, or server playlist syncing.
 
 ## ✨ Features
@@ -79,15 +78,15 @@ a music subscription, offline server downloads, or server playlist syncing.
   **Settings → Library Settings → Subsonic**.
 - 🏠 Combine local and server tracks, or use **Hide Local Music** while streaming.
 - 🧑‍🎤 Browse songs, artists, album artists, albums, and genres.
-- 🔍 Search songs, artists, albums, and your ClassiPod playlists.
+- 🔍 Search songs, artists, albums, and your MyPod playlists.
 - 📂 Discover Android music through MediaStore. Select a parent music folder on
   iOS, macOS, Windows, or Linux and scan its subfolders automatically.
 - ⚡ Cache metadata and artwork for faster startup, refresh the library,
   rebuild the index and exclude folders.
 - 📋 Inspect unreadable files and retry guidance in **Missing Tracks**.
 - 🧹 Optionally hide duplicate filenames without deleting music files.
-- 📃 Create and save custom ClassiPod playlists.
-- ⭐ Rate songs, with ratings and edits stored in ClassiPod.
+- 📃 Create and save custom MyPod playlists.
+- ⭐ Rate songs, with ratings and edits stored in MyPod.
 - 📝 View embedded lyrics when available.
 - 🎶 Play MP3, WAV, FLAC, M4A, MP4, Ogg, Opus, AAC, AIFF, APE, and MOV audio,
   subject to the platform's playback support.
@@ -129,11 +128,11 @@ a music subscription, offline server downloads, or server playlist syncing.
 - 🎮 Play offline Brick, Snake, 2048 and draw-one Solitaire from **Games**.
 - 📖 Get started with the introductory tutorial.
 - ℹ️ Find app information in the About screen.
-- 🌍 Use ClassiPod in your language with a multilingual interface.
+- 🌍 Use MyPod in your language with a multilingual interface.
 
 ### 🎵 Supported audio formats
 
-ClassiPod imports a format when its metadata can be read and at least one
+MyPod imports a format when its metadata can be read and at least one
 configured playback backend can play it. Playback availability therefore varies
 by platform:
 
@@ -166,14 +165,14 @@ keeps its configuration and cache, hides its tracks, and stops server playback.
 Saved playlist entries remain available when the same server is reconnected.
 **Refresh Library** fetches a new catalog; **Re-index** also clears cached
 server artwork. Failed scans retain the previous catalog. Ratings and edits
-stay in ClassiPod and are not written back to the server.
+stay in MyPod and are not written back to the server.
 
 Native passwords use OS secure storage. Web passwords last only until reload;
 re-enter the password through Configure Subsonic or when starting playback.
 Metadata and artwork are cached, but audio is streamed and requires a connection.
 Server playlist synchronization and offline audio downloads are not included.
 
-Web servers must allow CORS from the ClassiPod origin. Browsers block HTTP
+Web servers must allow CORS from the MyPod origin. Browsers block HTTP
 servers from an HTTPS app. Native apps allow HTTP for user-configured servers,
 including LAN IP addresses, using app-wide Android and Apple transport
 exceptions because server hosts are not known at build time. HTTPS certificates
