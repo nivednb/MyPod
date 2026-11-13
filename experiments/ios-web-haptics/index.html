@@ -9,7 +9,7 @@ button,input{font:inherit}button{padding:12px;margin:5px;background:#334155;colo
 .wheel input{width:42px;height:30px}
 .top{top:10px;left:110px}.left{top:116px;left:10px}.right{top:116px;right:10px}.bottom{bottom:10px;left:110px}.center{top:112px;left:110px}
 #log{white-space:pre-wrap;background:#0f172a;padding:12px;min-height:100px;max-height:240px;overflow:auto}
-</style>
+input[type=range]{width:100%;accent-color:#94a3b8} .testbox{background:#1e293b;padding:14px;border-radius:12px;margin:20px 0} .hint{color:#cbd5e1;font-size:14px}</style>
 <h1>ClassiPod haptic test</h1>
 <p>Experimental page only. It does not change music playback or wheel sounds. Test on a physical iPhone in Safari and installed PWA. A logged event is <strong>not</strong> proof of a physical haptic.</p>
 <p>1. Tap each visible switch. 2. Drag a finger continuously across the switches. 3. Try the synthetic-click button. Note which actions actually produce a physical tap.</p>
@@ -20,6 +20,8 @@ button,input{font:inherit}button{padding:12px;margin:5px;background:#334155;colo
 <label class="bottom"><input type="checkbox" switch aria-label="Play switch"></label>
 <label class="center"><input type="checkbox" switch aria-label="Select switch"></label>
 </div>
+<section class="testbox"><h2>Test B: native stepped slider</h2><p class="hint">Start with your finger directly on the slider thumb. Drag slowly from 0 to 20, then back. Do you feel a haptic at every numbered step, only at the ends, or none? This is a separate browser-native control, not the ClassiPod wheel.</p><input id="slider" type="range" min="0" max="20" step="1" value="10" aria-label="Stepped native slider"><output id="slider-value">10</output><p><button data-answer="slider-each">Haptic each step</button><button data-answer="slider-ends">Only ends</button><button data-answer="slider-none">No slider haptics</button></p></section>
+<section class="testbox"><h2>Test C: touch target tracking</h2><p class="hint">Begin on the grey wheel background, move over a switch, then lift. Repeat starting directly on a switch. This measures which DOM element receives each touch; it does not synthesize clicks.</p><p id="touch-target">No touch yet</p></section>
 <button id="synthetic">Synthetic switch click (expected no iOS haptic)</button>
 <button id="clear">Clear log</button>
 <p>iOS version: <input id="ios" placeholder="e.g. 26.5" aria-label="iOS version"></p>
@@ -34,8 +36,11 @@ switches.forEach(s=>{
  s.addEventListener('change',e=>log(s.getAttribute('aria-label')+' change trusted='+e.isTrusted));
  s.addEventListener('touchstart',()=>log(s.getAttribute('aria-label')+' touchstart'),{passive:true});
 });
+const slider=document.querySelector('#slider');slider.addEventListener('input',e=>{document.querySelector('#slider-value').textContent=slider.value;log('slider input '+slider.value+' trusted='+e.isTrusted);});
 const wheel=document.querySelector('#wheel');let last=0;
-wheel.addEventListener('touchmove',e=>{const now=performance.now();if(now-last>300){log('wheel touchmove');last=now;}},{passive:true});
+wheel.addEventListener('touchstart',e=>{const t=e.touches[0];document.querySelector('#touch-target').textContent='Started: '+e.target.tagName+' / under finger: '+document.elementFromPoint(t.clientX,t.clientY)?.tagName;},{passive:true});
+wheel.addEventListener('touchend',e=>{document.querySelector('#touch-target').textContent+=' / ended';},{passive:true});
+wheel.addEventListener('touchmove',e=>{const now=performance.now();if(now-last>300){{const t=e.touches[0];const hit=document.elementFromPoint(t.clientX,t.clientY);log('wheel touchmove initial='+e.target.tagName+' under='+hit?.tagName+' '+(hit?.getAttribute('aria-label')||''));last=now;}}},{passive:true});
 document.querySelector('#synthetic').addEventListener('click',()=>{switches[0].click();log('script called input.click()');});
 document.querySelector('#clear').addEventListener('click',()=>out.textContent='');
 document.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>log('USER REPORT '+b.dataset.answer+' iOS='+document.querySelector('#ios').value)));
